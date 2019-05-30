@@ -1,0 +1,7 @@
+{
+	"name" : "backend-api",
+	"script" : "bin/www",
+	"args" : ["--exec babel-node"],
+	"node_args" : ["--exec babel-node"],
+	"autorestart":true
+}
