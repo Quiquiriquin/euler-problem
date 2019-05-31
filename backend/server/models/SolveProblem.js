@@ -6,7 +6,8 @@ const ObjectId = Schema.ObjectId
 const solveProblemSchema = new Schema({
 	idSolution: ObjectId,
 	sum: Number,
-	numbers: [Number]
+	numbers: [Number],
+	limit: Number
 })
 
 const Solutions = mongoose.model('Solutions', solveProblemSchema)

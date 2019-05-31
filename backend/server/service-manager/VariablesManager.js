@@ -1,10 +1,11 @@
 class VariablesManager {
 
 	createSolutionVariables (data) {
-		let { numbers, sum } = data;
+		let { numbers, sum, limit } = data;
 		return {
 			numbers,
-			sum
+			sum,
+			limit
 		}
 	}
 

@@ -57,6 +57,7 @@ class ProblemController {
 		let ans = 0, arr = [];
 		try {
             let data = await variablesManager.createSolutionVariables(getAnswer(limit, ans, arr));
+            data.limit = limit
             await manager.postSolution(data)
 			ControllerUtils.successfulOperation(res, {
 				data
