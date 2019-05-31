@@ -30,3 +30,7 @@
 	border: 1px solid #cacaca !important;
 	border-radius: 5px !important; 
 }
+
+.error{
+    color: #d10808;
+}

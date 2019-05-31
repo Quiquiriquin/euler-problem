@@ -8,6 +8,8 @@ const validate = values => {
 
 	if(!values.limit) errors.limit = "Insert a number"
 	if(!/^[0-9]+$/i.test(values.limit)) errors.limit = "Type a valid number"
+	if(values.limit < 0) errors.limit = "Insert a number upper than 0"
+	return errors
 }
 
 let SolveForm = props => {

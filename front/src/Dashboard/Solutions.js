@@ -12,13 +12,13 @@ class Solutions extends Component {
 	}
 
 	getSolutions = async() => {
+		this.props.updateLoader(true)
 		try{
 			let ans = await manager.getSolves()
-			console.log(ans)
-			this.props.updateResults(ans.data.data)
-			console.log(this.props)
+			setTimeout(() => {this.props.updateLoader(false); this.props.updateResults(ans.data.data)}, 700)
 		} catch(err) {
 			console.log(err)
+			this.props.updateLoader(false)
 		}
 	}
 
@@ -58,7 +58,7 @@ class Solutions extends Component {
 const mapStateToProps = (state) => {
 	return {
 		resultSelected : state.app.ansSelected,
-		results : state.app.results
+		results : state.app.results,
 	}
 }
 
@@ -69,6 +69,9 @@ const mapDispatchToProps = dispatch => {
 		},
 		updateSelected : (ansSelected) => {
 			dispatch({ type : "UPDATE_ANS_SELECTED", data: {ansSelected}})
+		},
+		updateLoader : (isLoading) => {
+			dispatch({ type :"UPDATE_LOADER", data : {isLoading}})
 		}
 	}
 }

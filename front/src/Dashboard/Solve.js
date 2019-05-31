@@ -10,13 +10,13 @@ import DisplayInfo from './DisplayInfo';
 const Solve = props => {
 
 	let onFormSubmit = async(data) => {
-		console.log(data)
+		props.updateLoader(true)
 		try{
 			let ans = await manager.postSolve(data)
-			console.log(ans)
-			props.updateResult(ans.data.data)
+			setTimeout(() => {props.updateLoader(false); props.updateResult(ans.data.data)}, 700)
 		} catch(err) {
 			console.log(err)
+			props.updateLoader(false)
 		} 
 	}
 
@@ -30,7 +30,7 @@ const Solve = props => {
 
 const mapStateToProps = (state) => {
 	return {
-		result : state.app.result
+		result : state.app.result,
 	}
 }
 
@@ -38,6 +38,9 @@ const mapDispatchToProps = dispatch => {
 	return {
 		updateResult : (result) => {
 			dispatch({type : "UPDATE_RESULT", data : {result}})
+		},
+		updateLoader : (isLoading) => {
+			dispatch({ type :"UPDATE_LOADER", data : {isLoading}})
 		}
 	}
 }
